@@ -24,7 +24,6 @@ public class DialogueTrigger : MonoBehaviour
     public delegate void OnTriggerDialogue(DialogueTrigger dt);
     //public delegate void OnEndDialogue(DialogueTrigger dt);
 
-
     public void TriggerDialogue()
     {
         onTriggerTDialogue?.Invoke(this);

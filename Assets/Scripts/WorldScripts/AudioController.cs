@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     [SerializeField]
-    public GameObject Petuhi_1, Petuhi_2, Street, VadimScene, Credits;
+    public GameObject Petuhi_1, Street, VadimScene, Credits;
 
     public void LaunchPetuhi()
     {
@@ -34,7 +34,6 @@ public class AudioController : MonoBehaviour
         {
             yield return null;
         }
-        LaunchPetuhi_2();
         yield return null;
 
     }
@@ -45,18 +44,8 @@ public class AudioController : MonoBehaviour
         Petuhi_1.GetComponent<AudioSource>().Play();
     }
 
-    private void LaunchPetuhi_2()
-    {
-        if (!Petuhi_2.GetComponent<AudioSource>().isPlaying)
-        {
-            Petuhi_2.GetComponent<AudioSource>().loop = true;
-            Petuhi_2.GetComponent<AudioSource>().Play();
-        }
-    }
-
     public void StopPetuhi()
     {
         Petuhi_1.GetComponent<AudioSource>().Stop();
-        Petuhi_2.GetComponent<AudioSource>().Stop();
     }
 }

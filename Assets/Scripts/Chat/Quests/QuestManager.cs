@@ -8,7 +8,9 @@ public class QuestManager : MonoBehaviour
     public ArrayList questsActiveList;
     public ArrayList questsCompleteList;
 
-  
+    
+
+
     public void ToActivateQuest(Quest quest)
     {
         if (!questsCompleteList.Contains(quest))
