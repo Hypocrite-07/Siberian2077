@@ -11,8 +11,7 @@ public class QuestItem : MonoBehaviour
 
     private void Start()
     {
-        ButtonAdvice = gameObject.transform.Find("Button E").gameObject;
-        
+        ButtonAdvice = gameObject.transform.GetChild(0).gameObject;
     }
 
     private void FixedUpdate()
@@ -21,22 +20,9 @@ public class QuestItem : MonoBehaviour
         {
             return;
         }
-        else if (nearTheItem)
-        {
-            ButtonAdvice.SetActive(true);
-        }
-        else
-        {
-            ButtonAdvice.SetActive(false);
-        }
-        /*
         if (ButtonAdvice != null)
         {
-            if (gameObject.name == "Telephone")
-            {
-                return;
-            }
-            else if (nearTheItem)
+            if (nearTheItem)
             {
                 ButtonAdvice.SetActive(true);
             }
@@ -45,23 +31,25 @@ public class QuestItem : MonoBehaviour
                 ButtonAdvice.SetActive(false);
             }
         }
-        */
+        
     }
 
         void Update()
         {
+        /*
         if (gameObject.name == "Telephone")
         {
             isFind = true;
         }
+        */
         if (nearTheItem && Input.GetKeyDown(KeyCode.E))
         {
-            FindObjectOfType<DialogueUIManager>().toShowNotification($"Взаимодействие выполнено.");
+            DialogueUIManager.ToShowNotification($"Взаимодействие выполнено.");
             if (gameObject.name == "Boots")
-                FindObjectOfType<Player>().Redisign();
+                Player.Instance.Redisign();
             if (gameObject.name == "Goose")
             {
-                if(FindObjectOfType<Player>().isHasOtvertka)
+                if (Player.Instance.isHasOtvertka)
                 {
                     GameObject.Find("Goose_Invis_Has").GetComponent<DialogueTrigger>().TriggerDialogue();
                 }
@@ -73,7 +61,7 @@ public class QuestItem : MonoBehaviour
             if (gameObject.name == "SnowBugorok")
             {
                 GameObject.Find("Invis_Dialogue_Snow_True").GetComponent<DialogueTrigger>().TriggerDialogue();
-                FindObjectOfType<Player>().isHasOtvertka = true;
+                Player.Instance.isHasOtvertka = true;
             }
             else if (gameObject.name == "SnowBugorok_0")
             {

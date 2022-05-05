@@ -37,10 +37,12 @@ public class Quest
         return text;
     }
 
+    /*
     public void EnableQuest()
     {
 
     }
+    */
 
     public void CompleteQuest()
     {

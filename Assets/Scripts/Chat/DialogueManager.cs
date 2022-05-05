@@ -19,14 +19,6 @@ public class DialogueManager : MonoBehaviour
     private Dialogue finalDialogue;
     private Dialogue thisDialogue;
 
-    public event OnStartDialogue onStartDialogue;
-    public event OnEndDialogue onEndDialogue;
-
-    public delegate void OnStartDialogue(DialogueManager dm);
-    public delegate void OnEndDialogue(DialogueManager dm);
-
-
-
     private void Start()
     {
         messages = new Queue<Message>();
@@ -54,7 +46,10 @@ public class DialogueManager : MonoBehaviour
         nameText.text = dialogue.name;
         _localNameText = dialogue.name;
         messages.Clear();
-        onStartDialogue?.Invoke(this);
+        if (dialogue.name == "Тимлид Вадим")
+        {
+            WorldController.Instance.SpawnMitrich();
+        }
     }
 
     public void StartDialogueQuestOnly(Dialogue dialogue, Quest quest)
@@ -110,9 +105,13 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextMessage()
     {
-        if (gameObject.name == "Teamlead")
-            FindObjectOfType<AudioController>().LaunchVadimScene();
-        if (FindObjectOfType<Player>().isDream)
+        if (thisDialogue.name == "Тимлид Вадим")
+        {
+            AudioController.Instance.LaunchVadimScene();
+        }
+        else if (gameObject.name == "Дед Митрич")
+            AudioController.Instance.LaunchMitrichScene();
+        if (Player.Instance.isDream)
             isDreamPlayerUpdate = true;
         FindObjectOfType<Player>().speedPlus = 0;
         FindObjectOfType<Player>().isTalk = true;
@@ -139,8 +138,8 @@ public class DialogueManager : MonoBehaviour
         {
             if (!message.isNPC)
             {
-                nameText.text = Player.Instate.MainName;
-                nameText.color = Player.Instate.ColorName;
+                nameText.text = Player.Instance.MainName;
+                nameText.color = Player.Instance.ColorName;
             }
             else
             {
@@ -150,18 +149,18 @@ public class DialogueManager : MonoBehaviour
         }
         if (message.notificationText.Length != 0)
         {
-            FindObjectOfType<DialogueUIManager>().toShowNotification(message.notificationText);
+            DialogueUIManager.ToShowNotification(message.notificationText);
         }
         dialogueText.text = message.messageText;
     }
 
     public void EndDialogue()
     {
-        onEndDialogue?.Invoke(this);
-        if (FindObjectOfType<Player>().isDream)
-            FindObjectOfType<CameraController>().toHideBlack();
-        FindObjectOfType<Player>().isTalk = false;
-        FindObjectOfType<Player>().speedPlus = 1;
-        FindObjectOfType<DialogueUIManager>().toHide();
+        //EventManager.current.onEndDialogueEvent(this);
+        if (Player.Instance.isDream)
+            CameraController.Instance.toHideBlack();
+        Player.Instance.isTalk = false;
+        Player.Instance.speedPlus = 1;
+        DialogueUIManager.Instance.toHide();
     }
 }

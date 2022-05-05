@@ -19,7 +19,7 @@ public class Player : Entity
     {
         //_rigidbody2D = GetComponent<Rigidbody2D>();
         //_animator = GetComponent<Animator>();
-        Instate = this;
+        Instance = this;
     }
 
     public void Redisign()
@@ -66,15 +66,19 @@ public class Player : Entity
 
     void Flip(bool right)
     {
-        if(_isRight == right) { 
-        _isRight = !right;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-            transform.localScale = theScale;
+        if (speedPlus != 0)
+        {
+            if (_isRight == right)
+            {
+                _isRight = !right;
+                Vector3 theScale = transform.localScale;
+                theScale.x *= -1;
+                transform.localScale = theScale;
+            }
         }
     }
 
-    public static Player Instate
+    public static Player Instance
     {
         get;
         set;

@@ -6,7 +6,19 @@ using UnityEngine.UI;
 public class DialogueUIManager : MonoBehaviour
 {
     [SerializeField]
-    public GameObject _dialogueCanvas, _dialogueSpeakerName, _dialogueSpeakerText, _choosePanel, _notificationPanel, _notificationText;
+    public GameObject _dialogueCanvas, _dialogueSpeakerName, _dialogueSpeakerText, _dialogueHolderSpeakerName, _choosePanel, _notificationPanel, _notificationText;
+
+    public static DialogueUIManager Instance { get; private set; }
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    public static void ToShowNotification(string text)
+    {
+        Instance.toShowNotification(text);
+    }
 
     public void toShow()
     {
@@ -18,9 +30,11 @@ public class DialogueUIManager : MonoBehaviour
         _dialogueCanvas.SetActive(false);
     }
 
-    public void toShowNotification(string text)
+
+    private void toShowNotification(string text)
     {
-        StopCoroutine(showNotification(text, 3));
+        StopAllCoroutines();
+        //StopCoroutine(showNotification(text, 3));
         StartCoroutine(showNotification(text, 3));
     }
 

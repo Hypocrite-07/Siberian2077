@@ -334,7 +334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &60362143
 Transform:
   m_ObjectHideFlags: 0
@@ -348,7 +348,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1063280892}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &60362144
 AudioSource:
@@ -361,7 +361,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 989f8bbb63ac9c04f95020b69b5a2545, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -622,7 +622,7 @@ GameObject:
   - component: {fileID: 122548355}
   m_Layer: 0
   m_Name: Invis_Dialogue_Snow_True
-  m_TagString: Untagged
+  m_TagString: NPC_Invis
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -654,8 +654,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7358b0879ac7c44eb7066de9e8d0f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dm: {fileID: 0}
-  ButtonAdvice: {fileID: 0}
+  dm: {fileID: 169707362}
   dialogue:
     name: "\u0421\u0443\u0433\u0440\u043E\u0431"
     messages:
@@ -751,7 +750,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 169707360}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.313452, y: 2.8315854, z: 12.402019}
+  m_LocalPosition: {x: 12.313454, y: 2.831585, z: 12.402019}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -792,7 +791,7 @@ Transform:
   m_Children:
   - {fileID: 1403874875}
   m_Father: {fileID: 543503862}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &202521058
 MonoBehaviour:
@@ -821,7 +820,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dm: {fileID: 169707362}
-  ButtonAdvice: {fileID: 1403874874}
   dialogue:
     name: "\u0414\u0432\u0435\u0440\u044C"
     messages: []
@@ -1048,10 +1046,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7e409d0ea4040774ba625b6c3af3f524, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.738
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -1451,7 +1449,7 @@ Transform:
   - {fileID: 920069240}
   - {fileID: 18484622}
   m_Father: {fileID: 543503862}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &369752767
 SpriteRenderer:
@@ -1582,7 +1580,7 @@ Transform:
   m_Children:
   - {fileID: 1735892001}
   m_Father: {fileID: 543503862}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &409971227
 MonoBehaviour:
@@ -1903,7 +1901,7 @@ Transform:
   m_Children:
   - {fileID: 104959182}
   m_Father: {fileID: 1063280892}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &493742932
 MonoBehaviour:
@@ -1932,7 +1930,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dm: {fileID: 169707362}
-  ButtonAdvice: {fileID: 0}
   dialogue:
     name: "\u041C\u0430\u0442\u044C \u0415\u0432\u0434\u043E\u043A\u0438\u044F"
     messages:
@@ -2318,6 +2315,7 @@ Transform:
   m_Children:
   - {fileID: 211639442}
   - {fileID: 577875905}
+  - {fileID: 1747509993}
   - {fileID: 1228154871}
   - {fileID: 1757621026}
   - {fileID: 1452832969}
@@ -2473,10 +2471,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: cce388537bec7e646a6b51f7bd023344, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 0.776
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -2603,8 +2601,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Petuhi_1: {fileID: 1537363968}
-  Street: {fileID: 0}
+  Street: {fileID: 211639441}
   VadimScene: {fileID: 577875904}
+  MitrichScene: {fileID: 1747509992}
   Credits: {fileID: 0}
 --- !u!1 &614423977
 GameObject:
@@ -3101,7 +3100,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 543503862}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &653454690
 BoxCollider2D:
@@ -3582,7 +3581,7 @@ Transform:
   m_Children:
   - {fileID: 729452688}
   m_Father: {fileID: 543503862}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &775325511
 BoxCollider2D:
@@ -3623,7 +3622,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dm: {fileID: 169707362}
-  ButtonAdvice: {fileID: 729452687}
   dialogue:
     name: "\u0422\u0438\u043C\u043B\u0438\u0434 \u0412\u0430\u0434\u0438\u043C"
     messages:
@@ -4021,7 +4019,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1063280892}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &825851126
 GameObject:
@@ -4306,7 +4304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &866940650
 Transform:
   m_ObjectHideFlags: 0
@@ -4320,7 +4318,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1063280892}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &866940651
 BoxCollider2D:
@@ -4554,7 +4552,7 @@ GameObject:
   - component: {fileID: 927242738}
   m_Layer: 0
   m_Name: Goose_Invis_NoHas
-  m_TagString: Untagged
+  m_TagString: NPC_Invis
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4586,8 +4584,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7358b0879ac7c44eb7066de9e8d0f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dm: {fileID: 0}
-  ButtonAdvice: {fileID: 0}
+  dm: {fileID: 169707362}
   dialogue:
     name: "\u0413\u0443\u0441\u044C"
     messages:
@@ -4725,7 +4722,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dm: {fileID: 169707362}
-  ButtonAdvice: {fileID: 9349710}
   dialogue:
     name: "\u0414\u0432\u0435\u0440\u044C"
     messages:
@@ -4976,12 +4972,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1537363969}
   - {fileID: 822567646}
   - {fileID: 2068181887}
   - {fileID: 60362143}
   - {fileID: 866940650}
   - {fileID: 493742931}
-  - {fileID: 1081575787}
   - {fileID: 1100237056}
   - {fileID: 982528636}
   - {fileID: 1995530259}
@@ -4990,38 +4986,6 @@ Transform:
   - {fileID: 468523940}
   m_Father: {fileID: 0}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1081575786
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1081575787}
-  m_Layer: 0
-  m_Name: AudioHome
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1081575787
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1081575786}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.14, y: 3.77, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1537363969}
-  m_Father: {fileID: 1063280892}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1087761400
 GameObject:
@@ -5241,7 +5205,7 @@ GameObject:
   - component: {fileID: 1119804923}
   m_Layer: 0
   m_Name: Invis_Dialogue_Snow_2
-  m_TagString: Untagged
+  m_TagString: NPC_Invis
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5273,8 +5237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7358b0879ac7c44eb7066de9e8d0f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dm: {fileID: 0}
-  ButtonAdvice: {fileID: 0}
+  dm: {fileID: 169707362}
   dialogue:
     name: "\u0421\u0443\u0433\u0440\u043E\u0431"
     messages:
@@ -5500,7 +5463,7 @@ Transform:
   - {fileID: 1119804922}
   - {fileID: 2013562271}
   m_Father: {fileID: 543503862}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1232386435
 GameObject:
@@ -6086,7 +6049,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1452832969
 Transform:
   m_ObjectHideFlags: 0
@@ -6101,7 +6064,7 @@ Transform:
   m_Children:
   - {fileID: 726049718}
   m_Father: {fileID: 543503862}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1452832970
 MonoBehaviour:
@@ -6130,7 +6093,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dm: {fileID: 169707362}
-  ButtonAdvice: {fileID: 726049717}
   dialogue:
     name: "\u0414\u0435\u0434 \u041C\u0438\u0442\u0440\u0438\u0447"
     messages:
@@ -6661,7 +6623,7 @@ GameObject:
   - component: {fileID: 1537363969}
   - component: {fileID: 1537363970}
   m_Layer: 0
-  m_Name: Petuhi_1
+  m_Name: PetuhiSounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6674,12 +6636,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1537363968}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -2.14, y: 3.77, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1081575787}
+  m_Father: {fileID: 1063280892}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1537363970
@@ -6984,6 +6946,134 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1747509992
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1747509993}
+  - component: {fileID: 1747509994}
+  m_Layer: 0
+  m_Name: MitrichMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1747509993
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747509992}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 543503862}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &1747509994
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747509992}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 626c9606126d30e4c90c2793255d3d95, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1757621025
 GameObject:
   m_ObjectHideFlags: 0
@@ -7016,7 +7106,7 @@ Transform:
   - {fileID: 2036656847}
   - {fileID: 927242737}
   m_Father: {fileID: 543503862}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1769411477
 GameObject:
@@ -7425,6 +7515,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2007143592}
+  - component: {fileID: 2007143593}
   m_Layer: 0
   m_Name: EventManager
   m_TagString: Untagged
@@ -7447,6 +7538,18 @@ Transform:
   m_Father: {fileID: 1256672044}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2007143593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2007143591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2a66d25105bfdb42979f7d30163a224, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2013562270
 GameObject:
   m_ObjectHideFlags: 0
@@ -7459,7 +7562,7 @@ GameObject:
   - component: {fileID: 2013562272}
   m_Layer: 0
   m_Name: Invis_Dialogue_Snow_3
-  m_TagString: Untagged
+  m_TagString: NPC_Invis
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7491,8 +7594,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7358b0879ac7c44eb7066de9e8d0f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dm: {fileID: 0}
-  ButtonAdvice: {fileID: 0}
+  dm: {fileID: 169707362}
   dialogue:
     name: "\u0421\u0443\u0433\u0440\u043E\u0431"
     messages:
@@ -7540,7 +7642,7 @@ GameObject:
   - component: {fileID: 2036656848}
   m_Layer: 0
   m_Name: Goose_Invis_Has
-  m_TagString: Untagged
+  m_TagString: NPC_Invis
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7572,8 +7674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7358b0879ac7c44eb7066de9e8d0f96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dm: {fileID: 0}
-  ButtonAdvice: {fileID: 0}
+  dm: {fileID: 169707362}
   dialogue:
     name: "\u0413\u0443\u0441\u044C"
     messages:
@@ -7903,7 +8004,7 @@ Transform:
   m_Children:
   - {fileID: 1475875105}
   m_Father: {fileID: 1063280892}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2068181888
 MonoBehaviour:
@@ -7932,7 +8033,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dm: {fileID: 169707362}
-  ButtonAdvice: {fileID: 1475875104}
   dialogue:
     name: "\u041C\u0430\u0442\u044C \u0415\u0432\u0434\u043E\u043A\u0438\u044F"
     messages:

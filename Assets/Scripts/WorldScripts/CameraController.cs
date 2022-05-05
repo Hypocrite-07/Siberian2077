@@ -14,8 +14,11 @@ public class CameraController : MonoBehaviour
 
     private Vector3 pos;
 
+    public static CameraController Instance { get; private set; }
+
     private void Awake()
     {
+        Instance = this;
         if (!player)
             player = FindObjectOfType<Player>().transform;
     }
@@ -24,7 +27,7 @@ public class CameraController : MonoBehaviour
     {
         if (canvas.enabled)
         {
-            FindObjectOfType<DialogueUIManager>().toShowNotification("Задание выполнено.");
+            DialogueUIManager.ToShowNotification("Задание выполнено.");
             canvas.enabled = false;
         }
     }

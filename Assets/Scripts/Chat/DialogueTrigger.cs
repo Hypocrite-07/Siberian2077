@@ -7,32 +7,22 @@ public class DialogueTrigger : MonoBehaviour
 {
     public DialogueManager dm;
     //public QuestManager qm;
-    public GameObject ButtonAdvice;
     private bool nearTheNPC = false;
     public Dialogue dialogue;
     public Quest quest;
 
-    private bool isNothingsText = false;
-    private bool questItemTargetInit = false;
-    private bool questItemsTargetInit = false;
-    private bool questTalkTargetInit = false;
-    private DialogueUIManager DUIM;
-
-    public event OnTriggerDialogue onTriggerTDialogue;
-    //public event OnEndDialogue onEndDialogue;
-
-    public delegate void OnTriggerDialogue(DialogueTrigger dt);
-    //public delegate void OnEndDialogue(DialogueTrigger dt);
-
+    private GameObject ButtonAdvice;
+    private bool isNothingsText = false, questItemTargetInit = false, questItemsTargetInit = false, questTalkTargetInit = false;
+    //private DialogueUIManager DUIM;
     public void TriggerDialogue()
     {
-        onTriggerTDialogue?.Invoke(this);
+
+        //EventManager.current.onTriggerDialogueEvent(this);
         if (gameObject.name == "DoorToStreet")
         {
             if(quest.isComplete)
             {
-                FindObjectOfType<WorldController>().GoToStreet();
-                FindObjectOfType<AudioController>().StopPetuhi();
+                WorldController.Instance.GoToStreet();
             }    
         }
 
@@ -40,10 +30,9 @@ public class DialogueTrigger : MonoBehaviour
         {
             if (quest.isComplete)
             {
-                FindObjectOfType<WorldController>().GoToHome();
+                WorldController.Instance.GoToHome();
             }
         }
-
         if (gameObject.GetComponent<QuestDialogue>() != null) 
         {
             if (!gameObject.GetComponent<QuestDialogue>().isTalked)
@@ -141,7 +130,7 @@ public class DialogueTrigger : MonoBehaviour
                     }
                     else
                     {
-                        DUIM.toShowNotification("Кажется, диалоги закончились.");
+                        DialogueUIManager.ToShowNotification("Кажется, диалоги закончились.");
                         isNothingsText = true;
                         Debug.LogWarning("Quests are null and dialogues by readable.");
                     }
@@ -224,12 +213,14 @@ public class DialogueTrigger : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
             SetNearTheNPC(false);
+
     }
 
     private void Awake()
     {
-        DUIM = FindObjectOfType<DialogueUIManager>();
-        DUIM.toShowNotification("Задание: Проснуться");
+        //DUIM = FindObjectOfType<DialogueUIManager>();
+        ButtonAdvice = gameObject.transform.Find("Button E").gameObject;
+        DialogueUIManager.ToShowNotification("Задание: Проснуться");
     }
 
     private void FixedUpdate()
@@ -266,14 +257,17 @@ public class DialogueTrigger : MonoBehaviour
     {
         if ((nearTheNPC && Input.GetKeyDown(KeyCode.E)))
         {
-            //FindObjectOfType<AudioController>().LaunchPetuhi();
-            DialogueTrigger dt = GetComponent<DialogueTrigger>();
-            dt.TriggerDialogue();
+            if (!Player.Instance.isTalk)
+            {
+                //FindObjectOfType<AudioController>().LaunchPetuhi();
+                DialogueTrigger dt = GetComponent<DialogueTrigger>();
+                dt.TriggerDialogue();
+            }
         }
-        if (gameObject.name == "MotherInvisible" && FindObjectOfType<Player>().isDream && Input.GetKeyDown(KeyCode.F))
+        if (gameObject.name == "MotherInvisible" && Player.Instance.isDream && !Player.Instance.isTalk && Input.GetKeyDown(KeyCode.F))
         {
-            FindObjectOfType<AudioController>().LaunchPetuhi();
-            FindObjectOfType<CameraController>().toHideText();
+            AudioController.Instance.LaunchPetuhi();
+            CameraController.Instance.toHideText();
             DialogueTrigger dt = GetComponent<DialogueTrigger>();
             dt.TriggerDialogue();
         }

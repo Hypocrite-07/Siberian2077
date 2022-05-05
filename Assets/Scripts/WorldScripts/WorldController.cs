@@ -5,12 +5,20 @@ using UnityEngine;
 public class WorldController : MonoBehaviour
 {
     [SerializeField]
-    private GameObject street, home, finish;
+    private GameObject street, home, finish, Mitrich;
+
+    public static WorldController Instance { get; private set; }
+
     public void GoToStreet()
     {
         street.SetActive(true);
         home.SetActive(false);
-        FindObjectOfType<AudioController>().LaunchStreetMusic();
+        AudioController.Instance.LaunchStreetMusic();
+    }
+
+    public void SpawnMitrich()
+    {
+        Mitrich.SetActive(true);
     }
 
     public void GoToHome()
@@ -21,7 +29,7 @@ public class WorldController : MonoBehaviour
 
     private void Awake()
     {
-
+        Instance = this;
     }
 
     void Start()
