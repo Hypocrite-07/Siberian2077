@@ -66,17 +66,29 @@ public class DialogueTrigger : MonoBehaviour
             }
             else if (quest.typeOfQuest == questType.findManyQuest)
             {
+                Debug.Log("DT: [ManyQuest Checker] Start");
                 if (questItemsTargetInit)
                 {
-                    if (quest.objectOfFind.GetComponent<QuestItem>().isFind)
+                    int finds = 0;
+                    for (int i = 0; i < quest.objectsOfFind.Length; i++)
                     {
-                        questItemTargetInit = false;
+                        if (quest.objectsOfFind[i].GetComponent<QuestItem>().isFind)
+                        {
+                            finds++;
+                        }
+                    }
+                    
+                    if (finds == quest.objectsOfFind.Length)
+                    {
+                        questItemsTargetInit = false;
                         quest.isComplete = true;
                         dialogue.isLoop = false;
                         quest.givedQuest = false;
                         Debug.Log("TD: 1");
-                        Destroy(quest.objectOfFind.GetComponent<QuestItem>());
-                        //FindObjectOfType<DialogueUIManager>().toShowNotification($"Квест \"{quest.name}\" был завершён.");
+                        for (int i = 0; i < quest.objectsOfFind.Length; i++)
+                        {
+                            Destroy(quest.objectsOfFind[i].GetComponent<QuestItem>());
+                        }
                     }
                 }
                 else
@@ -155,7 +167,7 @@ public class DialogueTrigger : MonoBehaviour
         
         if (!quest.isComplete)
         {
-            if (quest.objectOfFind != null || quest.objectOfTalk != null)
+            if (quest.objectOfFind != null || quest.objectOfTalk != null || quest.objectsOfFind != null)
             {
                 if (quest.typeOfQuest == questType.findQuest)
                 {
@@ -169,20 +181,18 @@ public class DialogueTrigger : MonoBehaviour
                 }
                 else if (quest.typeOfQuest == questType.findManyQuest)
                 {
+                    Debug.Log("DT: [ManyQuest] Register");
                     if (!questItemsTargetInit)
                     {
-                        int finds = 0;
+                        Debug.Log("DT: [ManyQuest] 1 Step");
                         for (int i = 0; i < quest.objectsOfFind.Length; i++)
                         {
-                            if (quest.objectsOfFind[i].GetComponent<QuestItem>().isFind)
-                            {
-                                finds++;
-                            }
+                            Debug.Log($"DT: [ManyQuest] {i+1} of the {quest.objectsOfFind.Length} quest items was init");
+                            quest.objectsOfFind[i].AddComponent<QuestItem>();
                         }
-                        if (finds == quest.objectsOfFind.Length)
-                            questItemsTargetInit = true;
-                        else
-                            questItemsTargetInit = false;
+                        Debug.Log("DT: [ManyQuest] 2 Step");
+                        questItemsTargetInit = true;
+                        quest.givedQuest = true;
                     }
                 }
                 else if (quest.typeOfQuest == questType.talkQuest)
@@ -219,7 +229,8 @@ public class DialogueTrigger : MonoBehaviour
     private void Awake()
     {
         //DUIM = FindObjectOfType<DialogueUIManager>();
-        ButtonAdvice = gameObject.transform.Find("Button E").gameObject;
+        if (!gameObject.CompareTag("NPC_Invis"))
+            ButtonAdvice = gameObject.transform.Find("Button E").gameObject;
         DialogueUIManager.ToShowNotification("Задание: Проснуться");
     }
 

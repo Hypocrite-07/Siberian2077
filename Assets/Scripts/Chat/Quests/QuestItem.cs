@@ -11,7 +11,15 @@ public class QuestItem : MonoBehaviour
 
     private void Start()
     {
-        ButtonAdvice = gameObject.transform.GetChild(0).gameObject;
+        GameObject _gameObject = gameObject.transform.GetChild(0).gameObject;
+        if (_gameObject.name == "Button E")
+        {
+            ButtonAdvice = _gameObject;
+        }
+        else
+        {
+            Debug.LogWarning($"ButtonAdvice not init. Name GO: {gameObject.name}");
+        }
     }
 
     private void FixedUpdate()
@@ -34,17 +42,11 @@ public class QuestItem : MonoBehaviour
         
     }
 
-        void Update()
-        {
-        /*
-        if (gameObject.name == "Telephone")
-        {
-            isFind = true;
-        }
-        */
+    void Update()
+    {
         if (nearTheItem && Input.GetKeyDown(KeyCode.E))
         {
-            DialogueUIManager.ToShowNotification($"Взаимодействие выполнено.");
+            DialogueUIManager.ToShowNotification($"Р’Р·Р°РёРјРѕРґРµР№СЃС‚РІРёРµ РІС‹РїРѕР»РЅРµРЅРѕ.");
             if (gameObject.name == "Boots")
                 Player.Instance.Redisign();
             if (gameObject.name == "Goose")
@@ -56,6 +58,7 @@ public class QuestItem : MonoBehaviour
                 else
                 {
                     GameObject.Find("Goose_Invis_NoHas").GetComponent<DialogueTrigger>().TriggerDialogue();
+                    return;
                 }
             }
             if (gameObject.name == "SnowBugorok")
@@ -74,7 +77,7 @@ public class QuestItem : MonoBehaviour
             isFind = true;
             gameObject.SetActive(false);
         }
-        }
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

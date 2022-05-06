@@ -46,10 +46,8 @@ public class DialogueManager : MonoBehaviour
         nameText.text = dialogue.name;
         _localNameText = dialogue.name;
         messages.Clear();
-        if (dialogue.name == "Тимлид Вадим")
-        {
-            WorldController.Instance.SpawnMitrich();
-        }
+
+        StartD_Script();
     }
 
     public void StartDialogueQuestOnly(Dialogue dialogue, Quest quest)
@@ -105,12 +103,6 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextMessage()
     {
-        if (thisDialogue.name == "Тимлид Вадим")
-        {
-            AudioController.Instance.LaunchVadimScene();
-        }
-        else if (gameObject.name == "Дед Митрич")
-            AudioController.Instance.LaunchMitrichScene();
         if (Player.Instance.isDream)
             isDreamPlayerUpdate = true;
         FindObjectOfType<Player>().speedPlus = 0;
@@ -122,10 +114,7 @@ public class DialogueManager : MonoBehaviour
         }
         
         Message message = messages.Dequeue();
-        if (message.isAuthor)
-        {
-            nameText.text = "";
-        }
+        /*
         if (finalDialogue != null)
         {
             if (finalDialogue.isFinal)
@@ -133,6 +122,11 @@ public class DialogueManager : MonoBehaviour
                 nameText.text = message.nameNpc;
                 nameText.color = message.color;
             }
+        }
+        */
+        if (message.isAuthor)
+        {
+            nameText.text = "";
         }
         else
         {
@@ -162,5 +156,27 @@ public class DialogueManager : MonoBehaviour
         Player.Instance.isTalk = false;
         Player.Instance.speedPlus = 1;
         DialogueUIManager.Instance.toHide();
+
+        EndD_Script();
+    }
+
+    private void StartD_Script()
+    {
+        if (thisDialogue.name == "Тимлид Вадим")
+        {
+            WorldController.Instance.SpawnMitrich();
+            AudioController.Instance.LaunchVadimScene();
+        }
+        else if (thisDialogue.name == "Дед Митрич")
+            AudioController.Instance.LaunchMitrichScene();
+    }
+
+    private void EndD_Script()
+    {
+        if (thisDialogue.name == "Тимлид Вадим" || thisDialogue.name == "Дед Митрич")
+        {
+            AudioController.Instance.LaunchStreetMusic();
+        }
+
     }
 }
