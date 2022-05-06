@@ -51,5 +51,4 @@ public class DialogueUIManager : MonoBehaviour
         _notificationPanel.SetActive(false);
 
     }
-
 }

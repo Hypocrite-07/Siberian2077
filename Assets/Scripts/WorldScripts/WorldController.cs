@@ -7,6 +7,8 @@ public class WorldController : MonoBehaviour
     [SerializeField]
     private GameObject street, home, finish, Mitrich;
 
+    private bool isFinalScene = false;
+
     public static WorldController Instance { get; private set; }
 
     public void GoToStreet()
@@ -19,6 +21,21 @@ public class WorldController : MonoBehaviour
     public void SpawnMitrich()
     {
         Mitrich.SetActive(true);
+    }
+
+    public void GoToFinalScene()
+    {
+        //CameraController.Instance.toStartFinalBlack();
+        isFinalScene = true;
+    }
+
+    private void toFinalScene()
+    {
+        home.SetActive(false);
+        street.SetActive(false);
+        finish.SetActive(true);
+        AudioController.Instance.LaunchFinalMusic();
+        CameraController.Instance.toHideBlack();
     }
 
     public void GoToHome()
@@ -41,5 +58,13 @@ public class WorldController : MonoBehaviour
     void Update()
     {
         
+    }
+
+    private void FixedUpdate()
+    {
+        if (isFinalScene)
+        {
+            toFinalScene();
+        }
     }
 }

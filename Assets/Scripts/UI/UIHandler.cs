@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class UIHandler : MonoBehaviour
 {
     [SerializeField]
-    public Sprite spriteStartGame, spriteStartGameInMouse, spriteAuthors, spriteAuthorsInMouse;
+    public Sprite spriteAuthors, spriteAuthorsInMouse;
 
     public void toWeb(string url)
     {

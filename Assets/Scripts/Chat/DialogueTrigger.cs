@@ -53,7 +53,6 @@ public class DialogueTrigger : MonoBehaviour
                         quest.isComplete = true;
                         dialogue.isLoop = false;
                         quest.givedQuest = false;
-                        Debug.Log("TD: 1");
                         Destroy(quest.objectOfFind.GetComponent<QuestItem>());
                         //FindObjectOfType<DialogueUIManager>().toShowNotification($" вест \"{quest.name}\" был завершЄн.");
                     }
@@ -84,7 +83,18 @@ public class DialogueTrigger : MonoBehaviour
                         quest.isComplete = true;
                         dialogue.isLoop = false;
                         quest.givedQuest = false;
-                        Debug.Log("TD: 1");
+                        /**
+                         *  DELETE IF GAME WILL CONTINUE AFTER JAM
+                         *  DELETE IF GAME WILL CONTINUE AFTER JAM
+                         *  DELETE IF GAME WILL CONTINUE AFTER JAM
+                         **/
+                        Player.Instance.canGoToFinal = true;
+                        /**
+                         *  DELETE IF GAME WILL CONTINUE AFTER JAM
+                         *  DELETE IF GAME WILL CONTINUE AFTER JAM
+                         *  DELETE IF GAME WILL CONTINUE AFTER JAM
+                         **/
+
                         for (int i = 0; i < quest.objectsOfFind.Length; i++)
                         {
                             Destroy(quest.objectsOfFind[i].GetComponent<QuestItem>());

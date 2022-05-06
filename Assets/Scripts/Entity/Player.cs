@@ -13,6 +13,7 @@ public class Player : Entity
     public bool isDream = true;
     public bool isTalk = false;
     public bool isHasOtvertka = false;
+    public bool canGoToFinal = false;
     [SerializeField] private Sprite _sprite;
 
     void Awake()

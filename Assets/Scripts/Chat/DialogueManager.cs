@@ -177,6 +177,12 @@ public class DialogueManager : MonoBehaviour
         {
             AudioController.Instance.LaunchStreetMusic();
         }
-
+        else if (thisDialogue.name == "Дед Митрич")
+        {
+            if (!Player.Instance.canGoToFinal)
+                AudioController.Instance.LaunchStreetMusic();
+            else
+                WorldController.Instance.GoToFinalScene();
+        }
     }
 }

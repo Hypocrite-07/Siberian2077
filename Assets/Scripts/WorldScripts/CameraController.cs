@@ -23,6 +23,39 @@ public class CameraController : MonoBehaviour
             player = FindObjectOfType<Player>().transform;
     }
 
+    public void toStartBlack(bool final)
+    {
+        if (final)
+            StartCoroutine(showText("Финал.", 3, true));
+        else
+        {
+            if (canvas.enabled)
+                StartCoroutine(showText("Нажмите \"F\" чтобы проснуться", 5, false));
+            else
+            {
+                canvas.enabled = true;
+                toStartBlack(false);
+            }
+        }
+    }
+
+    IEnumerator showText(string text, int duration, bool final)
+    {
+        if (final)
+            canvas.enabled = true;
+        canvas.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().enabled = true;
+        while (duration >= 0)
+        {
+            canvas.transform.GetChild(0).gameObject.transform.GetChild(0).GetComponent<Text>().text = text;
+            duration--;
+            yield return new WaitForSeconds(1f);
+        }
+        yield return new WaitForSeconds(1f);
+        if (final)
+            canvas.enabled = false;
+
+    }
+
     public void toHideBlack()
     {
         if (canvas.enabled)
