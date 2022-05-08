@@ -35,7 +35,7 @@ public class DialogueUIManager : MonoBehaviour
     {
         StopAllCoroutines();
         //StopCoroutine(showNotification(text, 3));
-        StartCoroutine(showNotification(text, 3));
+        StartCoroutine(showNotification(text, 1));
     }
 
     IEnumerator showNotification(string text, int duration)

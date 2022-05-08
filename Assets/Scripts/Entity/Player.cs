@@ -40,6 +40,10 @@ public class Player : Entity
 
     private void FixedUpdate()
     {
+        if (WorldController.IsFinalScene)
+            if (_isRight)
+                Flip(_isRight);
+            return;
         if (Input.GetKey(KeyCode.LeftShift))
         {
             if (Input.GetKey(KeyCode.A))

@@ -9,6 +9,8 @@ public class WorldController : MonoBehaviour
 
     private bool isFinalScene = false;
 
+    public static bool IsFinalScene = false;
+
     public static WorldController Instance { get; private set; }
 
     public void GoToStreet()
@@ -27,6 +29,8 @@ public class WorldController : MonoBehaviour
     {
         //CameraController.Instance.toStartFinalBlack();
         isFinalScene = true;
+        IsFinalScene = true;
+        toFinalScene();
     }
 
     private void toFinalScene()

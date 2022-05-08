@@ -60,7 +60,8 @@ public class CameraController : MonoBehaviour
     {
         if (canvas.enabled)
         {
-            DialogueUIManager.ToShowNotification("Задание выполнено.");
+            if(!Player.Instance.canGoToFinal)
+                DialogueUIManager.ToShowNotification("Задание выполнено.");
             canvas.enabled = false;
         }
     }

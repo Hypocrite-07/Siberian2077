@@ -89,6 +89,7 @@ public class DialogueTrigger : MonoBehaviour
                          *  DELETE IF GAME WILL CONTINUE AFTER JAM
                          **/
                         Player.Instance.canGoToFinal = true;
+                        Debug.LogWarning($"GoToFinal_1 {Player.Instance.canGoToFinal}");
                         /**
                          *  DELETE IF GAME WILL CONTINUE AFTER JAM
                          *  DELETE IF GAME WILL CONTINUE AFTER JAM

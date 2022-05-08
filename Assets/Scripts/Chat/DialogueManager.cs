@@ -173,16 +173,20 @@ public class DialogueManager : MonoBehaviour
 
     private void EndD_Script()
     {
-        if (thisDialogue.name == "Тимлид Вадим" || thisDialogue.name == "Дед Митрич")
+        if (thisDialogue.name == "Тимлид Вадим")
         {
             AudioController.Instance.LaunchStreetMusic();
         }
         else if (thisDialogue.name == "Дед Митрич")
         {
+            Debug.LogWarning($"GoToFinal_2 {Player.Instance.canGoToFinal}");
             if (!Player.Instance.canGoToFinal)
                 AudioController.Instance.LaunchStreetMusic();
             else
+            {
+                Debug.LogWarning("Final scene is running.");
                 WorldController.Instance.GoToFinalScene();
+            }
         }
     }
 }
