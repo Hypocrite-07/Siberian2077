@@ -73,6 +73,7 @@ public class WorldController : MonoBehaviour
         preCreditFinalScene.SetActive(false);
         IsAfterCredits = true;
         postCreditFinalScene.SetActive(true);
+        AudioController.Instance.LaunchCricket();
         Player.Instance.GetComponent<SpriteRenderer>().color = opacityColor;
     }
 

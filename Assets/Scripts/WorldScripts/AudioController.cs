@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     [SerializeField]
-    public GameObject Petuhi_1, Street, VadimScene, MitrichScene, FinalMusic, Credits;
+    public GameObject Petuhi_1, Street, VadimScene, MitrichScene, FinalMusic, Credits, crickets;
 
     private GameObject _lastMusicGameObject;
 
@@ -45,6 +45,14 @@ public class AudioController : MonoBehaviour
         LaunchMusic(FinalMusic);
         Debug.Log("MUS: FINAL");
     }
+
+    public void LaunchCricket()
+    {
+        LaunchMusic(crickets);
+        Debug.Log("MUS: CRICKET");
+    }
+
+
 
     private void LaunchMusic(GameObject _gameObject)
     {
