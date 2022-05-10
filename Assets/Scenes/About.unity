@@ -672,8 +672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ca5182e90d67ba4f9771f83960ea5e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteStartGame: {fileID: 0}
-  spriteStartGameInMouse: {fileID: 0}
   spriteAuthors: {fileID: 0}
   spriteAuthorsInMouse: {fileID: 0}
 --- !u!4 &1339524041
@@ -930,7 +928,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u0421\u0446\u0435\u043D\u0430\u0440\u0438\u0441\u0442\u043A\u0430\n2D
-    \u0425\u0443\u0434\u043E\u0436\u043D\u0438\u0446\u0430\nUI/UX \u0425\u0443\u0434\u043E\u0436\u043D\u0438\u043A\n\u0421\u0430\u0443\u043D\u0434-\u0414\u0438\u0437\u0430\u0439\u043D\u0435\u0440\n\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u043C\u0438\u0441\u0442\n"
+    \u0425\u0443\u0434\u043E\u0436\u043D\u0438\u0446\u0430\nUI/UX \u0425\u0443\u0434\u043E\u0436\u043D\u0438\u043A\n\u0421\u0430\u0443\u043D\u0434-\u0414\u0438\u0437\u0430\u0439\u043D\u0435\u0440\n\u041F\u0440\u043E\u0433\u0440\u0430\u043C\u0438\u0441\u0442\n"
 --- !u!222 &1737011813
 CanvasRenderer:
   m_ObjectHideFlags: 0
