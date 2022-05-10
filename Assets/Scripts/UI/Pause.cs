@@ -7,15 +7,19 @@ using UnityEngine.UI;
 
 public class Pause : MonoBehaviour
 {
-
     [SerializeField] private GameObject pausePanel;
+    /*
     [SerializeField] private Button AudioButton;
     [SerializeField] private Sprite OnMusic;
     [SerializeField] private Sprite OffMusic;
     [SerializeField] private AudioSource mainAudioSource;
+    */
+
+    public static Pause Instance { get; private set; }
 
     private void Awake()
     {
+        Instance = this;
         pausePanel.SetActive(false);
     }
 
@@ -27,40 +31,28 @@ public class Pause : MonoBehaviour
 
     void Start()
     {
-        AudioButton.GetComponent<Image>().sprite = OnMusic;
+        //AudioButton.GetComponent<Image>().sprite = OnMusic;
         //mainAudioSource.GetComponent<AudioSettings>().AudioPlay = true;
-    }
-
-    public void SetMusic()
-    {
-        /*
-        if (mainAudioSource.GetComponent<AudioSettings>().AudioPlay)
-        {
-            AudioButton.GetComponent<Image>().sprite = OnMusic;
-        }
-        else
-        {
-            AudioButton.GetComponent<Image>().sprite = OffMusic;
-        }
-        */
     }
 
     public void ToMenu()
     {
-        SceneManager.LoadScene(0);
+        UIHandler.Instance.toMenu();
         Time.timeScale = 1;
     }
-    
+
+    /*
     public void RestartLevel()
     {
         SceneManager.LoadScene((SceneManager.GetActiveScene().buildIndex));
         Time.timeScale = 1;
     }
-
+    */
     public void PauseOff()
     {
         pausePanel.SetActive(false);
         Time.timeScale = 1;
     }
+    
 
 }

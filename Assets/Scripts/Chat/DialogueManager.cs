@@ -42,9 +42,17 @@ public class DialogueManager : MonoBehaviour
     private void initDefaultSettingDialogue(Dialogue dialogue)
     {
         thisDialogue = dialogue;
+        if (!dialogue.isFinal)
+        {
+            nameText.text = dialogue.name;
+            _localNameText = dialogue.name;
+        }
+        else
+        {
+            nameText.text = dialogue.messages[0].nameNpc;
+            _localNameText = dialogue.messages[0].nameNpc;
+        }
         FindObjectOfType<DialogueUIManager>().toShow();
-        nameText.text = dialogue.name;
-        _localNameText = dialogue.name;
         messages.Clear();
 
         StartD_Script();
@@ -86,21 +94,6 @@ public class DialogueManager : MonoBehaviour
         DisplayNextMessage();
     }
 
-    public void StartFinalDialogue(Dialogue dialogue)
-    {
-        FindObjectOfType<DialogueUIManager>().toShow();
-        finalDialogue = dialogue;
-        nameText.text = dialogue.name;
-        _localNameText = dialogue.name;
-        messages.Clear();
-
-        foreach (Message message in dialogue.messages)
-        {
-            messages.Enqueue(message);
-        }
-        DisplayNextMessage();
-    }
-
     public void DisplayNextMessage()
     {
         if (Player.Instance.isDream)
@@ -114,16 +107,7 @@ public class DialogueManager : MonoBehaviour
         }
         
         Message message = messages.Dequeue();
-        /*
-        if (finalDialogue != null)
-        {
-            if (finalDialogue.isFinal)
-            {
-                nameText.text = message.nameNpc;
-                nameText.color = message.color;
-            }
-        }
-        */
+
         if (message.isAuthor)
         {
             nameText.text = "";
@@ -137,8 +121,17 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                nameText.text = _localNameText;
-                nameText.color = Color.cyan;
+                if (!thisDialogue.isFinal)
+                {
+                    nameText.text = _localNameText;
+                    nameText.color = Color.cyan;
+                }
+                else
+                {
+                    Debug.LogWarning("Exect");
+                    nameText.text = message.nameNpc;
+                    nameText.color = message.color;
+                }    
             }
         }
         if (message.notificationText.Length != 0)
@@ -150,9 +143,11 @@ public class DialogueManager : MonoBehaviour
 
     public void EndDialogue()
     {
-        //EventManager.current.onEndDialogueEvent(this);
         if (Player.Instance.isDream)
+        {
+            Player.Instance.isDream = false;
             CameraController.Instance.toHideBlack();
+        }
         Player.Instance.isTalk = false;
         Player.Instance.speedPlus = 1;
         DialogueUIManager.Instance.toHide();
@@ -185,6 +180,23 @@ public class DialogueManager : MonoBehaviour
             else
             {
                 Debug.LogWarning("Final scene is running.");
+                WorldController.Instance.GoToFinalScene();
+            }
+        }
+        if (WorldController.IsAfterCredits)
+        {
+            UIHandler.Instance.toMenu();
+        }
+        else
+        {
+            if (WorldController.IsBlackFinalScene)
+                WorldController.Instance.GoToCreditScene();
+            else if (WorldController.IsFinalScene && thisDialogue.isFinal)
+                WorldController.Instance.GoToPreCreditsFinalScene();
+            else if (WorldController.IsFinalScene)
+            {
+                AudioController.Instance.LaunchFinalMusic();
+                //Destroy(Player.Instance._rigidbody2D);
                 WorldController.Instance.GoToFinalScene();
             }
         }

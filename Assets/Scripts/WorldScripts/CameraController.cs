@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private Transform player;
     [SerializeField] private Canvas canvas;
+    [SerializeField] private Canvas creditsCanvas;
     [SerializeField] public GameObject homeLocation;
 
 
@@ -56,6 +57,25 @@ public class CameraController : MonoBehaviour
 
     }
 
+    public void toCredits()
+    {
+        creditsCanvas.transform.GetChild(0).gameObject.SetActive(true);
+        StartCoroutine(showCredits(5));
+    }
+
+    IEnumerator showCredits(int duration)
+    {
+        Debug.LogWarning("CreditShow");
+        while (duration >= 0)
+        {
+            duration--;
+            yield return new WaitForSeconds(1f);
+        }
+        yield return new WaitForSeconds(0f);
+        WorldController.Instance.GoToPostCreditsFinalScene();
+        creditsCanvas.transform.GetChild(0).gameObject.SetActive(false);
+    }
+
     public void toHideBlack()
     {
         if (canvas.enabled)
@@ -81,6 +101,8 @@ public class CameraController : MonoBehaviour
             try
             {
                 pos = player.position;
+                if (WorldController.IsFinalScene)
+                    pos.x -= 2f;
                 pos.z = -5f;
                 pos.y += 2.17f;
 

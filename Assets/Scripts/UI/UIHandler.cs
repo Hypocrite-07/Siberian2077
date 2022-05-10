@@ -9,6 +9,8 @@ public class UIHandler : MonoBehaviour
     [SerializeField]
     public Sprite spriteAuthors, spriteAuthorsInMouse;
 
+    public static UIHandler Instance { get; private set; }
+
     public void toWeb(string url)
     {
         Application.OpenURL(url);
@@ -51,5 +53,10 @@ public class UIHandler : MonoBehaviour
     public void Exit()
     {
         Environment.Exit(0);
+    }
+
+    public void Awake()
+    {
+        Instance = this;
     }
 }

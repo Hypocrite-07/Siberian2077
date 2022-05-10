@@ -14,11 +14,15 @@ public class Player : Entity
     public bool isTalk = false;
     public bool isHasOtvertka = false;
     public bool canGoToFinal = false;
+
+    [HideInInspector]
+    public Rigidbody2D _rigidbody2D;
+
     [SerializeField] private Sprite _sprite;
 
     void Awake()
     {
-        //_rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         //_animator = GetComponent<Animator>();
         Instance = this;
     }
@@ -35,37 +39,47 @@ public class Player : Entity
 
     private void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape))
+            Pause.Instance.SetPause();
     }
 
     private void FixedUpdate()
     {
         if (WorldController.IsFinalScene)
-            if (_isRight)
-                Flip(_isRight);
-            return;
-        if (Input.GetKey(KeyCode.LeftShift))
         {
+            if (speedPlus != 0)
+            {
+                speedPlus = 0;
+            }
+            if (_isRight)
+                Flip(!_isRight);
+            return;
+        }
+        if (!isDream)
+        {
+            if (Input.GetKey(KeyCode.LeftShift))
+            {
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.Translate(-Vector2.right * ((_speed * speedPlus) * 2) * Time.deltaTime);
+                    Flip(false);
+                }
+                else if (Input.GetKey(KeyCode.D))
+                {
+                    transform.Translate(Vector2.right * ((_speed * speedPlus) * 2) * Time.deltaTime);
+                    Flip(true);
+                }
+            }
             if (Input.GetKey(KeyCode.A))
             {
-                transform.Translate(-Vector2.right * ((_speed * speedPlus) * 2) * Time.deltaTime);
+                transform.Translate(-Vector2.right * (_speed * speedPlus) * Time.deltaTime);
                 Flip(false);
             }
             else if (Input.GetKey(KeyCode.D))
             {
-                transform.Translate(Vector2.right * ((_speed * speedPlus) * 2) * Time.deltaTime);
+                transform.Translate(Vector2.right * (_speed * speedPlus) * Time.deltaTime);
                 Flip(true);
             }
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.Translate(-Vector2.right * (_speed * speedPlus) * Time.deltaTime);
-            Flip(false);
-        }
-        else if (Input.GetKey(KeyCode.D))
-        {
-            transform.Translate(Vector2.right * (_speed * speedPlus) * Time.deltaTime);
-            Flip(true);
         }
     }
 
@@ -75,6 +89,7 @@ public class Player : Entity
         {
             if (_isRight == right)
             {
+                Debug.LogWarning("flip");
                 _isRight = !right;
                 Vector3 theScale = transform.localScale;
                 theScale.x *= -1;

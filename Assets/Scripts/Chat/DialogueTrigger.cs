@@ -239,10 +239,30 @@ public class DialogueTrigger : MonoBehaviour
 
     private void Awake()
     {
-        //DUIM = FindObjectOfType<DialogueUIManager>();
-        if (!gameObject.CompareTag("NPC_Invis"))
-            ButtonAdvice = gameObject.transform.Find("Button E").gameObject;
-        DialogueUIManager.ToShowNotification("Задание: Проснуться");
+        if (WorldController.IsFinalScene)
+        {
+            //Debug.LogWarning("InitFinalScene");
+            StartCoroutine(StartDialogueAfterTime(2));
+        }
+        else
+        {
+            //DUIM = FindObjectOfType<DialogueUIManager>();
+            if (!gameObject.CompareTag("NPC_Invis"))
+                ButtonAdvice = gameObject.transform.Find("Button E").gameObject;
+            DialogueUIManager.ToShowNotification("Задание: Проснуться");
+        }
+    }
+
+    IEnumerator StartDialogueAfterTime(int duration)
+    {
+        DialogueTrigger dt = GetComponent<DialogueTrigger>();
+        while (duration >= 0)
+        {
+            duration--;
+            yield return new WaitForSeconds(1f);
+        }
+        yield return new WaitForSeconds(0f);
+        dt.TriggerDialogue();
     }
 
     private void FixedUpdate()
