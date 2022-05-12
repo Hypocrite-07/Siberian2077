@@ -5,7 +5,7 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     [SerializeField]
-    public GameObject Petuhi_1, Street, VadimScene, MitrichScene, FinalMusic, Credits, crickets;
+    public GameObject Petuhi_1, HomeMusic, Street, VadimScene, MitrichScene, FinalMusic, Credits, crickets;
 
     private GameObject _lastMusicGameObject;
 
@@ -18,49 +18,62 @@ public class AudioController : MonoBehaviour
 
     public void LaunchPetuhi()
     {
-        LaunchMusic(Petuhi_1);
+        StartCoroutine(LaunchHomeMusic());
+    }
+
+    IEnumerator LaunchHomeMusic()
+    {
+        LaunchMusic(Petuhi_1, false);
         Debug.Log("MUS: PETUHI");
+        while (Petuhi_1.GetComponent<AudioSource>().isPlaying)
+        {
+            yield return new WaitForSeconds(1f);
+        }
+        yield return new WaitForSeconds(0f);
+        LaunchMusic(HomeMusic, true);
+        Debug.Log("MUS: HOME");
     }
 
     public void LaunchStreetMusic()
     {
-        LaunchMusic(Street);
+        LaunchMusic(Street,true);
         Debug.Log("MUS: STREET");
     }
 
     public void LaunchVadimScene()
     {
-        LaunchMusic(VadimScene);
+        LaunchMusic(VadimScene, true);
         Debug.Log("MUS: VADIM");
     }
 
     public void LaunchMitrichScene()
     {
-        LaunchMusic(MitrichScene);
+        LaunchMusic(MitrichScene, true);
         Debug.Log("MUS: MITRICH");
     }
 
     public void LaunchFinalMusic()
     {
-        LaunchMusic(FinalMusic);
+        LaunchMusic(FinalMusic, true);
         Debug.Log("MUS: FINAL");
     }
 
     public void LaunchCricket()
     {
-        LaunchMusic(crickets);
+        LaunchMusic(crickets, true);
         Debug.Log("MUS: CRICKET");
     }
 
 
 
-    private void LaunchMusic(GameObject _gameObject)
+    private void LaunchMusic(GameObject _gameObject, bool _loop)
     {
         if (_lastMusicGameObject == _gameObject && _lastMusicGameObject.GetComponent<AudioSource>().isPlaying)
             return;
         if (_lastMusicGameObject != null && _lastMusicGameObject.GetComponent<AudioSource>().isPlaying)
             _lastMusicGameObject.GetComponent<AudioSource>().Stop();
         _lastMusicGameObject = _gameObject;
+        _gameObject.GetComponent<AudioSource>().loop = _loop;
         _gameObject.GetComponent<AudioSource>().Play();
     }
 

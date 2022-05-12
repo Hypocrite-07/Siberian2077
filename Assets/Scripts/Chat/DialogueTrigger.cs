@@ -153,7 +153,7 @@ public class DialogueTrigger : MonoBehaviour
                     }
                     else
                     {
-                        DialogueUIManager.ToShowNotification("Кажется, диалоги закончились.");
+                        DialogueUIManager.ToShowNotification("Нам больше не о чём говорить");
                         isNothingsText = true;
                         Debug.LogWarning("Quests are null and dialogues by readable.");
                     }
@@ -249,8 +249,13 @@ public class DialogueTrigger : MonoBehaviour
             //DUIM = FindObjectOfType<DialogueUIManager>();
             if (!gameObject.CompareTag("NPC_Invis"))
                 ButtonAdvice = gameObject.transform.Find("Button E").gameObject;
-            DialogueUIManager.ToShowNotification("Задание: Проснуться");
         }
+    }
+
+    private void Start()
+    {
+        if (Player.Instance.isDream)
+            DialogueUIManager.ToShowNotification("Нужно проснуться");
     }
 
     IEnumerator StartDialogueAfterTime(int duration)

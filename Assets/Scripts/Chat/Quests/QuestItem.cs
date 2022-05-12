@@ -46,7 +46,7 @@ public class QuestItem : MonoBehaviour
     {
         if (nearTheItem && Input.GetKeyDown(KeyCode.E))
         {
-            DialogueUIManager.ToShowNotification($"Взаимодействие выполнено.");
+            DialogueUIManager.ToShowNotification($"Взаимодействие выполнено");
             if (gameObject.name == "Boots")
                 Player.Instance.Redisign();
             if (gameObject.name == "Goose")
