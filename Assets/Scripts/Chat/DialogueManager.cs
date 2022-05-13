@@ -185,9 +185,6 @@ public class DialogueManager : MonoBehaviour
         }
         if (WorldController.IsAfterCredits)
         {
-            WorldController.IsAfterCredits = false;
-            WorldController.IsFinalScene = false;
-            WorldController.IsBlackFinalScene = false;
             UIHandler.Instance.toMenu();
         }
         else
