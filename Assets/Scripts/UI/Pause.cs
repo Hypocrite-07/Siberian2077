@@ -35,6 +35,7 @@ public class Pause : MonoBehaviour
         //mainAudioSource.GetComponent<AudioSettings>().AudioPlay = true;
     }
 
+
     public void ToMenu()
     {
         UIHandler.Instance.toMenu();

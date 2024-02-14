@@ -23,6 +23,9 @@ public class UIHandler : MonoBehaviour
 
     public void toMenu()
     {
+        WorldController.IsAfterCredits = false;
+        WorldController.IsFinalScene = false;
+        WorldController.IsBlackFinalScene = false;
         AsyncLoading(0);
     }
 
